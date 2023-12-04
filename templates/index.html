@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NASA APOD Image Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient(
+                to right,
+                #5FFAEF,
+                #A9E0FD,
+                #F1C4D7); /* Change the background color */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px; /* Increase the font size */
+            color: #333;
+            margin: 20px 0;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-image: linear-gradient(to right, #603813 0%, #b29f94  59%, #603813  100%);
+            margin: 10px;
+            padding: 20px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+        }
+
+        button:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>NASA APOD IMAGE VIEWER</h1>
+    <form method="POST">
+        <label for="date">Enter a date (YYYY-MM-DD):</label>
+        <input type="text" name="date" id="date" placeholder="e.g., 2023-10-18" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if image_data %}
+        <h2>{{ image_data.title }}</h2>
+        <p>{{ image_data.explanation }}</p>
+        <img src="{{ image_data.hdurl }}" alt="{{ image_data.title }}" width="600">
+    {% endif %}
+</body>
+</html>
+
